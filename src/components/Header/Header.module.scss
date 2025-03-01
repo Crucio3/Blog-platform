@@ -1,0 +1,90 @@
+.blog-header {
+  width: 100%;
+  padding: 0px 22px;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+
+  &__toList {
+    color: black;
+    text-decoration: none;
+  }
+
+  &__authentication {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__sign-in {
+    margin-right: 20px;
+    text-decoration: none;
+  }
+
+  &__sign-up {
+    color: #52c41a;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    width: 109px;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__create-article {
+    text-decoration: none;
+    color: #52c41a;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 112px;
+    height: 31px;
+    margin-right: 27px;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin-right: 27px;
+  }
+
+  &__img-wrapper {
+    width: 46px;
+    height: 46px;
+    margin-left: 13px;
+  }
+
+  &__img {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__log-out {
+    border: none;
+    width: 109px;
+    height: 51px;
+    font-size: 18px;
+    background-color: white;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

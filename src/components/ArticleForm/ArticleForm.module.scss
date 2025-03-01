@@ -1,0 +1,110 @@
+.article-form {
+  width: 938px;
+  background-color: white;
+  font-family: 'Roboto', serif;
+  padding: 48px 32px;
+  box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+
+  &__title {
+    font-size: 20px;
+    font-weight: 500;
+    width: 162px;
+    margin-bottom: 21px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__label {
+    font-size: 14px;
+    line-height: 22px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    padding-left: 12px;
+    margin-top: 2px;
+    font-size: 16px;
+
+    &::placeholder {
+      color: #d9d9d9;
+    }
+
+    &_error {
+      border-color: red;
+    }
+  }
+
+  &_error {
+    color: red;
+  }
+
+  &__text {
+    height: 168px;
+    resize: vertical;
+    padding: 8px 12px;
+    font-size: 16px;
+    font-family: 'Roboto', serif;
+  }
+
+  &__send {
+    width: 320px;
+    height: 40px;
+    border: none;
+    background-color: rgba(24, 144, 255, 1);
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__add-tag {
+    width: 136px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    border: 1px solid #1890ff;
+    border-radius: 5px;
+    color: #1890ff;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 21px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__tag {
+    width: 300px;
+    margin: 0;
+    margin-right: 17px;
+    margin-bottom: 5px;
+  }
+
+  &__deleteTag {
+    width: 120px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    border: 1px solid red;
+    border-radius: 5px;
+    color: red;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 21px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
