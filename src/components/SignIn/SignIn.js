@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { getData } from '../../store/slices/UserDataSlices.js';
+import { getUser } from '../../store/slices/UserDataSlices.js';
 
 import classes from './SignIn.module.scss';
 
@@ -30,9 +30,8 @@ const SignIn = () => {
         body: JSON.stringify(body),
       });
       const data = await response.json();
-      localStorage.setItem('user', JSON.stringify(data.user));
-      localStorage.setItem('login', 'true');
-      dispatch(getData());
+      localStorage.setItem('token', data.user.token);
+      dispatch(getUser());
       navigate('/');
       reset();
     } catch {

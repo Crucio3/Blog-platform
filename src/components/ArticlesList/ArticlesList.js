@@ -13,7 +13,7 @@ const ArticleList = () => {
 
   const articles = useSelector((state) => state.articles.articles || []);
   const loading = useSelector((state) => state.articles.loading);
-  const local = localStorage.getItem('user');
+  const local = localStorage.getItem('token');
 
   useEffect(() => {
     if (local === null) {
@@ -30,7 +30,7 @@ const ArticleList = () => {
 
   const pagination = (
     <Pagination
-      total={50}
+      total={650}
       align="center"
       onChange={(page) => {
         if (local === null) {

@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import Header from './components/Header/Header.js';
 import ArticleListPage from './pages/ArticlesListPage/ArticlesListPage.js';
@@ -10,8 +11,17 @@ import ProfilePage from './pages/ProfilePage/ProfilePage.js';
 import CreateArticlePage from './pages/CreateArticlePage/CreateArticlePage.js';
 import EditArticlePage from './pages/EditArticlePage/EditArticlePage.js';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.js';
+import { getUser } from './store/slices/UserDataSlices.js';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (token !== null) {
+      dispatch(getUser());
+    }
+  }, [dispatch, token]);
   return (
     <Fragment>
       <Header />

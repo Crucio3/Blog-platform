@@ -1,21 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getData, clearData } from '../../store/slices/UserDataSlices.js';
+import { clearData } from '../../store/slices/UserDataSlices.js';
+import { fetchArticlesLogout } from '../../store/slices/GetArticlesSlices.js';
 
 import classes from './Header.module.scss';
 
 const Header = () => {
   const dispatch = useDispatch();
   const actualData = useSelector((state) => state.data.data);
-
-  useEffect(() => {
-    dispatch(getData());
-  }, [dispatch]);
+  const loading = useSelector((state) => state.data.loading);
 
   const content =
-    localStorage.getItem('user') !== null ? (
+    localStorage.getItem('token') !== null ? (
       <div className={classes['blog-header__authentication']}>
         <Link to="new-article" className={classes['blog-header__create-article']}>
           Create article
@@ -31,6 +29,7 @@ const Header = () => {
           onClick={() => {
             localStorage.clear();
             dispatch(clearData());
+            dispatch(fetchArticlesLogout());
           }}
         >
           Log Out
@@ -47,12 +46,14 @@ const Header = () => {
       </div>
     );
 
+  const user = loading ? null : content;
+
   return (
     <header className={classes['blog-header']}>
       <Link to="/" className={classes['blog-header__toList']}>
         Realworld Blog
       </Link>
-      {content}
+      {user}
     </header>
   );
 };

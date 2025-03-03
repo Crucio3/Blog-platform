@@ -1,16 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export const getUser = createAsyncThunk('user/getUser', async () => {
+  const response = await fetch('https://blog-platform.kata.academy/api/user', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
+  const data = await response.json();
+  return data.user;
+});
 
 const UserDataSlices = createSlice({
   name: 'userData',
-  initialState: { data: { username: '', email: '', token: '', image: '' } },
+  initialState: { data: { username: '', email: '', token: '', image: '' }, loading: false },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getUser.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.data = action.payload;
+      })
+      .addCase(getUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+  },
   reducers: {
-    getData: () => {
-      if (JSON.parse(localStorage.getItem('user')) === null) {
-        return { data: { username: '', email: '', token: '', image: '' } };
-      } else {
-        return { data: JSON.parse(localStorage.getItem('user')) };
-      }
-    },
     clearData: (state) => {
       state.data = { username: '', email: '', token: '', image: '' };
     },

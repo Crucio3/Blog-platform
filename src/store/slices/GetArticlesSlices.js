@@ -4,7 +4,7 @@ export const fetchArticlesLogin = createAsyncThunk('articles/manyLogin', async (
   const response = await fetch(`https://blog-platform.kata.academy/api/articles?offset=${(page - 1) * 20}`, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`,
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   });
   const data = await response.json();

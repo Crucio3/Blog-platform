@@ -14,8 +14,7 @@ const ArticleCard = ({ article, isChild }) => {
 
   const { username, image } = article.author;
   const { slug } = article;
-
-  const token = useSelector((state) => state.data.data.token);
+  const token = localStorage.getItem('token');
   const nowUser = useSelector((state) => state.data.data.username);
 
   const navigate = useNavigate();
@@ -95,7 +94,7 @@ const ArticleCard = ({ article, isChild }) => {
       </div>
     ) : null;
 
-  const disabled = localStorage.getItem('user') === null ? true : false;
+  const disabled = token === null ? true : false;
 
   return (
     <div className={`${classes.card} ${isChild ? classes['card_child'] : ''}`}>
